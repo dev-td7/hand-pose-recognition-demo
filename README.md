@@ -12,7 +12,7 @@ This demonstration servers as a purpose to provide a quick insight without direc
 
 Input Image:
 
-![The hand sign/pose "8"](https://github.com/dev-td7/hand-pose-recognition-demo/blob/master/static/sample_8.png "The hand pose/sign '8'")
+![The hand sign/pose "8"](https://github.com/dev-td7/hand-pose-recognition-demo/blob/master/static/sample_8.png?raw=true "The hand pose/sign '8'")
 
 Result:
 
