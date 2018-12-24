@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Samples</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+            body{
+                font-size: 17px;
+                padding: 10px;
+            }
+            .highlight{
+                background: blueviolet;
+            }
+            #result{
+                font-size: 20px;
+            }
+            #logo{
+                width: 100px;
+                float: left;
+            }
+            #title{
+                color: #444;
+                font-weight: normal;
+                font-size: 20px;
+                height: 100px;
+                position: absolute;
+                top: 20px;
+                left: 0;
+                right: 0;
+                z-index: 10;
+                transition-duration: 0.5s;
+                cursor: pointer;
+                background: whitesmoke;
+            }
+    
+            #title:hover{
+                opacity: 1!important;
+                transition-duration: 1s;
+            }
+    
+            #title a{
+                text-decoration: none;
+                color: inherit;
+            }
+            #container{
+                width: calc(100% - 10px);
+                height: calc(100% - 10px);
+                margin: auto;
+                margin-top: 5px;
+                outline: 0 none;
+            }
+            #samples{
+                width: calc(100% - 20px);
+                font-family: 'Ubuntu', 'Calibri';
+                font-size: 17px;
+                line-height: 1.5em;
+                text-align: left;
+                color: #333;
+                margin-top: 150px;
+                padding: 0 10px;
+            }
+            h2{
+                font-size: 20px;
+            }
+            .sample-img{
+                max-width: 600px;
+                max-height: 500px;
+            }
+            #samples li{
+                font-size: 17px;
+            }
+            .sample-header{
+                font-size: 20px;
+                font-style: italic;
+                margin-top: 25px;
+            }
+        </style>
+</head>
+<body>
+        <div id="title" title="View the repository">
+            <a target="_blank" class="feed_off" href="https://github.com/kartik2112/silatra">
+                <img src="{{url_for('static', filename='silatra_logo.png')}}" id="logo" alt="Logo">
+                <h1 style="float: left;">Silatra</h1>
+            </a>
+        </div>
+        <div id="container">
+            <div id="samples">
+                <h2>Right click on any image and select the option that implies - "Save image"</h2>
+                <p class="sample-header">1. Sample of the sign - "5"</p>
+                <img class="sample-img" src="{{url_for('static', filename='sample_5.png')}}" alt="Sample for sign '5'">
+                <br/>
+                <p class="sample-header">2. Sample of the sign - "8"</p>
+                <img class="sample-img" src="{{url_for('static', filename='sample_8.png')}}" alt="Sample for sign '8'">
+                <br/>
+                <p class="sample-header">3. Sample of the sign - "a"</p>
+                <img class="sample-img" src="{{url_for('static', filename='sample_a.png')}}" alt="Sample for sign 'a'">
+                <br/>
+                <p class="sample-header">4. Sample of the sign - "d"</p>
+                <img class="sample-img" src="{{url_for('static', filename='sample_d.png')}}" alt="Sample for sign 'd'">
+                <br/>
+                <p class="sample-header">5. Sample of the sign - "g"</p>
+                <img class="sample-img" src="{{url_for('static', filename='sample_g.png')}}" alt="Sample for sign 'g'">
+            </div>
+        </div>
+</body>
+</html>

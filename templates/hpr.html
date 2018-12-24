@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Silatra hand pose recognition</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            font-size: 17px;
+            padding: 10px;
+        }
+        .highlight{
+            background: blueviolet;
+        }
+        #result{
+            font-size: 20px;
+        }
+        #logo{
+            width: 100px;
+            float: left;
+        }
+        #title{
+            color: #444;
+            font-weight: normal;
+            font-size: 20px;
+            width: 229px;
+            height: 100px;
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            padding: 0;
+            text-align: center;
+            z-index: 10;
+            transition-duration: 0.5s;
+            cursor: pointer;
+        }
+
+        #title:hover{
+            opacity: 1!important;
+            transition-duration: 1s;
+        }
+
+        #title a{
+            text-decoration: none;
+            color: inherit;
+        }
+        #container{
+            width: calc(100% - 10px);
+            height: calc(100% - 10px);
+            margin: auto;
+            margin-top: 5px;
+            outline: 0 none;
+        }
+        #upload{
+            width: calc(100% - 20px);
+            font-family: 'Ubuntu', 'Calibri';
+            font-size: 17px;
+            line-height: 1.5em;
+            text-align: center;
+            color: #333;
+            margin-top: 150px;
+            padding: 0 10px;
+        }
+        h2{
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="title" title="View the repository">
+        <a target="_blank" class="feed_off" href="https://github.com/kartik2112/silatra">
+            <img src="{{url_for('static', filename='silatra_logo.png')}}" id="logo" alt="Logo">
+            <h1 style="float: left;">Silatra</h1>
+        </a>
+    </div>
+    <form id="container" action="" method="POST" enctype="multipart/form-data">
+        <div id="upload">
+            <h2>Choose an image and hit 'Recognize hand pose' to get the result!</h2>
+            <div id="instructions" style="border: 2px dashed black;width: 620px;margin: auto;background: whitesmoke;padding: 10px 20px;">
+                <p style="color: #E53935;"><b>Please read this before you select an image:</b></p>
+                <ul style="text-align: justify;margin: auto;max-width: 600px;">
+                    <li>Do not use an image with skin-like colors (Such as red, orange, pink etc.). This is because skin colors are only used for recognition and may interfere during the proccess. For best results, use a white background. </li>
+                    <li>Only 1 hand should be visible. The model was trained for right hand, so please use your right hand. </li>
+                    <li>There should be ambient lighting conditions - not too bright to distort the colors and not too dark. </li>
+                    <li>Please use a full sleeve shirt.</li>
+                    <li><b><a href="/samples">Want to see the magic ASAP? Try these samples...</a></b></li>
+                </ul>
+            </div>
+            <br/>
+            <div style="display: block;width: 300px;margin: auto;">
+                <input id="img" type="file" name="img"/>
+            </div>
+            <br/>
+            <button id="submit_btn" type="submit" class="btn btn-success" style="font-size: 17px;">Recognize hand pose</button>
+            <p id="result" style="margin-top: 20px;"><b>{{ result }}</b></p>
+        </div>
+    </form>
+    <br>
+    <!-- <img src="data:image/png;base64,{{img_string}}" alt=""/> -->
+</body>
+</html>

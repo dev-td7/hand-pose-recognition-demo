@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Silatra Hand Pose Recognition</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        html, body{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #f5f5f5;
+            font-family: 'Ubuntu',sans-serif;
+            transition-duration: 0.5s;
+        }
+
+        #apk{
+            color: #0073c5;
+        }
+
+        #apk:visited{
+            color: #0073c5;
+        }
+
+        #main{
+            width: calc(100% - 10px);
+            height: calc(100% - 10px);
+            margin: auto;
+            margin-top: 5px;
+            outline: 0 none;
+        }
+
+        #description{
+            width: calc(100% - 20px);
+            font-family: 'Ubuntu', 'Calibri';
+            font-size: 1.5em;
+            line-height: 1.5em;
+            text-align: center;
+            color: #333;
+            margin-top: 200px;
+            padding: 0 10px;
+        }
+
+        #logo{
+            width: 100px;
+            float: left;
+        }
+
+        video{
+            outline: 0 none;
+            display: none;
+        }
+
+        #title{
+            color: #444;
+            font-weight: normal;
+            font-size: 20px;
+            width: 229px;
+            height: 100px;
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            padding: 0;
+            text-align: center;
+            z-index: 10;
+            transition-duration: 0.5s;
+            cursor: pointer;
+        }
+
+        #title:hover{
+            opacity: 1!important;
+            transition-duration: 1s;
+        }
+
+        #title a{
+            text-decoration: none;
+            color: inherit;
+        }
+
+        #stream{
+            width: 100%;
+            height: 100%;
+        }
+
+        #stop_btn, #start_btn{
+            background: #ff543644;
+            width: 200px;
+            height: 50px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 30px;
+            color: #f0f0f0;
+            transition-duration: 0.5s;
+            margin: auto;
+            font-size: 25px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            outline: 0 none;
+        }
+
+        #stop_btn:hover{
+            background: #ff5436;
+            transition-duration: 1s;
+            border: 1px solid #02020233;
+        }
+
+        #start_btn{
+            background: #00ea00;
+            color: #333;
+        }
+
+        .feed_on{
+            color: #f0f0f0!important;
+            opacity: 0.5;
+        }
+        .feed_off{
+            color: #444;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="title" title="View the repository">
+        <a target="_blank" class="feed_off" href="https://github.com/kartik2112/silatra">
+            <img src="{{url_for('static', filename='silatra_logo.png')}}" id="logo" alt="Logo">
+            <h1 style="float: left;">Silatra</h1>
+        </a>
+    </div>
+    <div id="main">
+        <div id="description">
+            <p><b>Silatra</b> is a Sign Language Translator able to translate the Indian Sign Language into English text.</p>
+            <p>This is a demo of the application. The main application is built as an Android application [<a target="_blank" id="apk" href="https://github.com/DevendraVyavaharkar/SiLaTra-UDP/releases">apk</a>]. This demo only demonstrates Hand Pose Recognition.</p>
+            <a href="/hand-pose-recognition">Try Hand Pose Recognition</a>
+        </div>
+    </div>
+</body>
+</html>
