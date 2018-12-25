@@ -70,6 +70,58 @@
         h2{
             font-size: 20px;
         }
+        .slider{
+            position:absolute;
+            width:100%;
+            height:5px;
+            overflow-x: hidden;
+        }
+
+        .line{
+            position:absolute;
+            opacity: 0.4;
+            background:#4a8df8;
+            width:150%;
+            height:5px; 
+        }
+
+        .subline{
+            position:absolute;
+            background:#4a8df8;
+            height:5px; 
+        }
+        .inc{
+            animation: increase 2s infinite;
+        }
+        .dec{
+            animation: decrease 2s 0.5s infinite;
+        }
+
+        @keyframes increase {
+            from { left: -5%; width: 5%; }
+            to { left: 130%; width: 100%;}
+        }
+        @keyframes decrease {
+            from { left: -80%; width: 80%; }
+            to { left: 110%; width: 10%;}
+        }
+        #slider-container{
+            max-width: 650px;
+            padding: 0 20px;
+            width: 100%;
+            margin: auto;
+            display: none;
+            position: relative;
+        }
+        #instructions{
+            border: 2px dashed black;
+            max-width: 620px;
+            width: 100%;
+            margin: auto;
+            background: whitesmoke;
+            padding: 10px 20px;
+            font-size: 15px;
+        }
     </style>
 </head>
 <body>
@@ -79,16 +131,27 @@
             <h1 style="float: left;">Silatra</h1>
         </a>
     </div>
-    <form id="container" action="" method="POST" enctype="multipart/form-data">
+    <form id="container" action="" method="POST" enctype="multipart/form-data" onsubmit="handle_submit();">
         <div id="upload">
-            <h2>Choose an image and hit 'Recognize hand pose' to get the result!</h2>
-            <div id="instructions" style="border: 2px dashed black;width: 620px;margin: auto;background: whitesmoke;padding: 10px 20px;">
+            {% if result != '' %}
+                <h2><span style="color: #1A237E;">Result: </span>{{ result }}</h2>
+            {% else %}
+                <h2 id="instructions-title">Choose an image and hit 'Recognize hand pose' to get the result!</h2>
+            {% endif %}
+
+            <div id="instructions">
+            {% if result == '' %}
                 <p style="color: #E53935;"><b>Please read this before you select an image:</b></p>
                 <ul style="text-align: justify;margin: auto;max-width: 600px;">
                     <li>Do not use an image with skin-like colors (Such as red, orange, pink etc.). This is because skin colors are only used for recognition and may interfere during the proccess. For best results, use a white background. </li>
                     <li>Only 1 hand should be visible. The model was trained for right hand, so please use your right hand. </li>
                     <li>There should be ambient lighting conditions - not too bright to distort the colors and not too dark. </li>
                     <li>Please use a full sleeve shirt.</li>
+            {% else %}
+                <p style="color: #1A237E;font-size: 17px;"><b>Note:</b></p>
+                <ul style="text-align: justify;margin: auto;max-width: 600px;width: 100%">
+            {% endif %}
+                    <li><b>This model was trained on hand images that were taken from a second person perspective(Think of it as you're holding the camera and taking an image of the person making a sign). Don't be surprised to get weird results in a first person perspective.</b></li>
                     <li><b><a href="/samples">Want to see the magic ASAP? Try these samples...</a></b></li>
                 </ul>
             </div>
@@ -98,9 +161,37 @@
             </div>
             <br/>
             <button id="submit_btn" type="submit" class="btn btn-success" style="font-size: 17px;">Recognize hand pose</button>
-            <p id="result" style="margin-top: 20px;"><b>{{ result }}</b></p>
+
+            <!-- 
+                Android Material Loading animation with pure css. 
+                Author: Stefano Ferrara http://androidpc.it/
+                Forked from https://codepen.io/chofoo/pen/Abril
+                Author: Simon Clavey https://simonclavey.co.uk/
+
+                Link to codepen: https://codepen.io/shalimano/pen/wBmNGJ
+                Link to StackOverflow: https://stackoverflow.com/questions/34773266/how-to-write-css-keyframes-to-indeterminate-material-design-progress-bar
+            -->
+            <br>
+            <br>
+            <div id="slider-container">
+                <p>Processing image....</p>
+                <div class="slider">
+                    <div class="line"></div>
+                    <div class="subline inc"></div>
+                    <div class="subline dec"></div>
+                </div>
+            </div>
         </div>
     </form>
+    <script>
+        function handle_submit(){
+            $("#instructions").slideUp(500);
+            $("#img").slideUp(500);
+            $("#submit_btn").slideUp(500);
+            $("#instructions-title").html("Hang in there!");
+            $("#slider-container").css('display', 'block');
+        }
+    </script>
     <br>
     <!-- <img src="data:image/png;base64,{{img_string}}" alt=""/> -->
 </body>

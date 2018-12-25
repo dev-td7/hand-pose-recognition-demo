@@ -35,7 +35,9 @@
                 z-index: 10;
                 transition-duration: 0.5s;
                 cursor: pointer;
-                background: whitesmoke;
+                margin: auto;
+                width: 100%;
+                max-width: 230px;
             }
     
             #title:hover{
@@ -59,7 +61,7 @@
                 font-family: 'Ubuntu', 'Calibri';
                 font-size: 17px;
                 line-height: 1.5em;
-                text-align: left;
+                text-align: center;
                 color: #333;
                 margin-top: 150px;
                 padding: 0 10px;
@@ -79,6 +81,23 @@
                 font-style: italic;
                 margin-top: 25px;
             }
+            .btn, .btn-success{
+                font-size: 17px;
+            }
+            .sample{
+                float: left;
+                margin: 15px;
+                display: block;
+                cursor: pointer;
+                border: 1px solid transparent;
+                transition-duration: 0.5s;
+                padding: 10px;
+            }
+            .sample:hover{
+                transition-duration: 0.5s;
+                border: 1px solid rgba(0,0,0,0.4);
+                background: whitesmoke;
+            }
         </style>
 </head>
 <body>
@@ -90,21 +109,27 @@
         </div>
         <div id="container">
             <div id="samples">
-                <h2>Right click on any image and select the option that implies - "Save image"</h2>
-                <p class="sample-header">1. Sample of the sign - "5"</p>
-                <img class="sample-img" src="{{url_for('static', filename='sample_5.png')}}" alt="Sample for sign '5'">
-                <br/>
-                <p class="sample-header">2. Sample of the sign - "8"</p>
-                <img class="sample-img" src="{{url_for('static', filename='sample_8.png')}}" alt="Sample for sign '8'">
-                <br/>
-                <p class="sample-header">3. Sample of the sign - "a"</p>
-                <img class="sample-img" src="{{url_for('static', filename='sample_a.png')}}" alt="Sample for sign 'a'">
-                <br/>
-                <p class="sample-header">4. Sample of the sign - "d"</p>
-                <img class="sample-img" src="{{url_for('static', filename='sample_d.png')}}" alt="Sample for sign 'd'">
-                <br/>
-                <p class="sample-header">5. Sample of the sign - "g"</p>
-                <img class="sample-img" src="{{url_for('static', filename='sample_g.png')}}" alt="Sample for sign 'g'">
+                <h2>Click on any sample to see the result after recognition</h2>
+                <div class="sample" onclick="window.location = '/hand-pose-recognition?image=sample_5.png'">
+                    <p class="sample-header">1. Sample of the sign - "5"</p>
+                    <img class="sample-img" src="{{url_for('static', filename='sample_5.png')}}" alt="Sample for sign '5'">
+                </div>
+                <div class="sample" onclick="window.location = '/hand-pose-recognition?image=sample_8.png'">
+                    <p class="sample-header">2. Sample of the sign - "8"</p>
+                    <img class="sample-img" src="{{url_for('static', filename='sample_8.png')}}" alt="Sample for sign '8'">
+                </div>
+                <div class="sample" onclick="window.location = '/hand-pose-recognition?image=sample_a.png'">
+                    <p class="sample-header">3. Sample of the sign - "a"</p>
+                    <img class="sample-img" src="{{url_for('static', filename='sample_a.png')}}" alt="Sample for sign 'a'">
+                </div>
+                <div class="sample" onclick="window.location = '/hand-pose-recognition?image=sample_d.png'">
+                    <p class="sample-header">4. Sample of the sign - "d"</p>
+                    <img class="sample-img" src="{{url_for('static', filename='sample_d.png')}}" alt="Sample for sign 'd'">
+                </div>
+                <div class="sample" onclick="window.location = '/hand-pose-recognition?image=sample_g.png'">
+                    <p class="sample-header">5. Sample of the sign - "g"</p>
+                    <img class="sample-img" src="{{url_for('static', filename='sample_g.png')}}" alt="Sample for sign 'g'">
+                </div>
             </div>
         </div>
 </body>
